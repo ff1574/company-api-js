@@ -1,0 +1,17 @@
+{
+    "name": "companydata",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "date-fns": "^2.22.1",
+        "express": "^4.21.1",
+        "sync-mysql": "^3.0.1"
+    }
+}
