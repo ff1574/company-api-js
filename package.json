@@ -5,13 +5,18 @@
     "main": "index.js",
     "scripts": {
         "start": "node app.js",
+        "dev": "nodemon app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "companydata": "file:",
         "date-fns": "^2.22.1",
         "express": "^4.21.1",
         "sync-mysql": "^3.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.7"
     }
 }
