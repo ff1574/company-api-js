@@ -101,6 +101,8 @@ router.put("/", (req, res) => {
       .json({ error: "Start time must be within the last week" });
   }
   if (!timecardBusiness.validateEndTime(start_time, end_time)) {
+    console.log(start_time, end_time);
+    console.log(timecardBusiness.validateEndTime(start_time, end_time));
     return res.status(400).json({
       error:
         "End time must be at least 1 hour after start time and on the same day",
@@ -115,6 +117,11 @@ router.put("/", (req, res) => {
     return res
       .status(400)
       .json({ error: "Timecard entries must be between 06:00 and 18:00" });
+  }
+  if (!timecardBusiness.validateUniqueStartTimePerDay(start_time, emp_id)) {
+    return res
+      .status(400)
+      .json({ error: "Employee already has a timecard for the specified day" });
   }
 
   const updatedTimecard = {

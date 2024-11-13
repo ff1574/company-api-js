@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     return res.status(400).json({ error: "Manager ID does not exist" });
   }
   const hireDateValidation = employeeBusiness.validateHireDate(hire_date);
-  if (hireDateValidation !== "true") {
+  if (hireDateValidation != "true") {
     return res.status(400).json({ error: hireDateValidation });
   }
 

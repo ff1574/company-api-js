@@ -1,4 +1,5 @@
 const BusinessEntity = require("./businessEntity");
+const departmentBusiness = require("./departmentBusiness");
 
 class EmployeeBusiness extends BusinessEntity {
   constructor() {
@@ -93,7 +94,7 @@ class EmployeeBusiness extends BusinessEntity {
   }
 
   validateDepartment(deptId, companyName) {
-    const department = this.dataLayer.getDepartment(companyName, deptId);
+    const department = departmentBusiness.getDepartment(companyName, deptId);
     return department !== null;
   }
 
@@ -107,9 +108,8 @@ class EmployeeBusiness extends BusinessEntity {
   validateHireDate(hireDate) {
     const today = new Date();
 
-    // Parse date assuming format DD-MM-YYYY
-    const [day, month, year] = hireDate.split("-");
-    const hireDateObj = new Date(year, month - 1, day);
+    // Parse date assuming format YYYY-MM-DD
+    const hireDateObj = new Date(hireDate);
 
     // Validate if hireDate is in the future
     if (hireDateObj > today) {

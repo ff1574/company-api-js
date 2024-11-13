@@ -39,7 +39,7 @@ class TimecardBusiness extends BusinessEntity {
 
   updateTimecard(timecardData) {
     const Timecard = this.dataLayer.Timecard;
-    
+
     try {
       const { timecardId, empId, startTime, endTime } = timecardData;
       const updatedTimecard = new Timecard(startTime, endTime, empId);
@@ -127,18 +127,24 @@ class TimecardBusiness extends BusinessEntity {
   }
 
   validateUniqueStartTimePerDay(startTime, empId) {
+    console.log(
+      `Validating unique start time for employee ID ${empId} on ${startTime}`
+    );
     const employeeTimecards = this.getAllTimecards(empId);
-    const newDate = new Date(startTime).toDateString();
+    const start = new Date(startTime);
 
     for (const timecard of employeeTimecards) {
-      const existingDate = new Date(timecard.startTime).toDateString();
-      if (existingDate === newDate) {
+      const existingStart = new Date(timecard.start_time);
+      if (existingStart.toDateString() === start.toDateString()) {
         console.warn(
-          `Employee ID ${empId} already has a timecard for the date ${newDate}.`
+          `Employee ID ${empId} already has a timecard on ${startTime}`
         );
         return false;
       }
     }
+    console.log(
+      `No existing timecard found for employee ID ${empId} on ${startTime}`
+    );
     return true;
   }
 

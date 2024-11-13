@@ -67,7 +67,13 @@ class DepartmentBusiness extends BusinessEntity {
     }
 
     try {
-      const departmentToUpdate = new Department(company, dept_name, dept_no, location, dept_id);
+      const departmentToUpdate = new Department(
+        company,
+        dept_name,
+        dept_no,
+        location,
+        dept_id
+      );
 
       return this.dataLayer.updateDepartment(departmentToUpdate);
     } catch (error) {
@@ -107,11 +113,13 @@ class DepartmentBusiness extends BusinessEntity {
   }
 
   // Method to validate unique department number
-  validateUniqueDeptNo(deptNo, companyName, deptId = null) {
+  validateUniqueDeptNo(deptNo, companyName) {
+    // Retrieve all departments for the specified company
     const allDepartments = this.getAll(companyName);
+
     for (let dept of allDepartments) {
-      if (dept.deptNo === deptNo && (deptId === null || dept.id !== deptId)) {
-        console.warn(`Department number ${deptNo} must be unique`);
+      if (deptNo == dept.dept_no) {
+        console.warn(`Department number ${deptNo} is not unique`);
         return false;
       }
     }
