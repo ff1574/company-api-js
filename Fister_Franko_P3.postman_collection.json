@@ -1,0 +1,1536 @@
+{
+	"info": {
+		"_postman_id": "3a76ffb1-ffc1-4e95-9996-8e8c8a9670f3",
+		"name": "Fister_Franko_P3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39218685"
+	},
+	"item": [
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "Departments - ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department?company=ff1574",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "ff1574"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department - One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department?company=ff1574&dept_id=12",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "ff1574"
+								},
+								{
+									"key": "dept_id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful Initial Insert\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"dept_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company",
+									"value": "ff1574",
+									"type": "text"
+								},
+								{
+									"key": "dept_name",
+									"value": "Javascript Dept",
+									"type": "text"
+								},
+								{
+									"key": "dept_no",
+									"value": "ff1574-5345",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "RIT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department - ERROR - dept_no",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful Initial Insert\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"dept_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company",
+									"value": "ff1574",
+									"type": "text"
+								},
+								{
+									"key": "dept_name",
+									"value": "Javascript Dept",
+									"type": "text"
+								},
+								{
+									"key": "dept_no",
+									"value": "ff1574-5345",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "RIT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated department names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"NEW NAME\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dept_id\": 19,\r\n    \"company\": \"ff1574\",\r\n    \"dept_name\":\"Mine dept\",\r\n    \"dept_no\": \"ff1574-53513525\",\r\n    \"location\": \"New York\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department - ERROR - dept_no",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated department names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"NEW NAME\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dept_id\": 21,\r\n    \"company\": \"ff1574\",\r\n    \"dept_name\":\"Mine dept\",\r\n    \"dept_no\": \"ff1574-535\",\r\n    \"location\": \"New York\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department - ERROR - dept_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated department names\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"NEW NAME\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dept_id\": 20,\r\n    \"company\": \"ff1574\",\r\n    \"dept_name\":\"Mine dept\",\r\n    \"dept_no\": \"ff1574-535\",\r\n    \"location\": \"New York\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Successful Delete\", function () {\r",
+									"    pm.expect(pm.response.text().toLowerCase()).to.include(\"success\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/department?company=ff1574&dept_id=17",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"department"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "ff1574"
+								},
+								{
+									"key": "dept_id",
+									"value": "17"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Employees - ALL",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All employees successfully returned\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"emp_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee?company=ff1574",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "ff1574"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee - One",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"All employees successfully returned\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"emp_id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee?emp_id=32",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "emp_id",
+									"value": "32"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful Insert\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"emp_id\");\r",
+									"});\r",
+									"var json = JSON.parse(responseBody);\r",
+									"console.log(json)\r",
+									"pm.collectionVariables.set(\"good_insert_emp_id\", json.emp_id || json.success.emp_id || 0);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company",
+									"value": "ff1574",
+									"type": "text"
+								},
+								{
+									"key": "emp_name",
+									"value": "Njofra",
+									"type": "text"
+								},
+								{
+									"key": "emp_no",
+									"value": "ff1574-99",
+									"type": "text"
+								},
+								{
+									"key": "hire_date",
+									"value": "07-11-2024",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "wmc",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "5000.0",
+									"type": "text"
+								},
+								{
+									"key": "dept_id",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "mng_id",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee - ERROR - future date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful Insert\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"emp_id\");\r",
+									"});\r",
+									"var json = JSON.parse(responseBody);\r",
+									"console.log(json)\r",
+									"pm.collectionVariables.set(\"good_insert_emp_id\", json.emp_id || json.success.emp_id || 0);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company",
+									"value": "ff1574",
+									"type": "text"
+								},
+								{
+									"key": "emp_name",
+									"value": "Frankomir",
+									"type": "text"
+								},
+								{
+									"key": "emp_no",
+									"value": "ff1574-2100111",
+									"type": "text"
+								},
+								{
+									"key": "hire_date",
+									"value": "2024-12-10",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "wmc",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "5000.0",
+									"type": "text"
+								},
+								{
+									"key": "dept_id",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "mng_id",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee - ERROR - weekend",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful Insert\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"emp_id\");\r",
+									"});\r",
+									"var json = JSON.parse(responseBody);\r",
+									"console.log(json)\r",
+									"pm.collectionVariables.set(\"good_insert_emp_id\", json.emp_id || json.success.emp_id || 0);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "company",
+									"value": "ff1574",
+									"type": "text"
+								},
+								{
+									"key": "emp_name",
+									"value": "Frankomir",
+									"type": "text"
+								},
+								{
+									"key": "emp_no",
+									"value": "ff1574-2100111",
+									"type": "text"
+								},
+								{
+									"key": "hire_date",
+									"value": "2024-11-09",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "wmc",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "5000.0",
+									"type": "text"
+								},
+								{
+									"key": "dept_id",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "mng_id",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated employee information\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bdftest\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company\": \"ff1574\",\r\n    \"emp_id\":45,\r\n    \"emp_name\":\"Franjomir Tudman\",\r\n    \"emp_no\": \"ff1574-59\",\r\n    \"hire_date\": \"08-11-2024\",\r\n    \"job\": \"Works the mines\",\r\n    \"salary\": 60000.0,\r\n    \"dept_id\": 14,\r\n    \"mng_id\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee - ERROR - future date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated employee information\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bdftest\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company\": \"ff1574\",\r\n    \"emp_id\":46,\r\n    \"emp_name\":\"Franjomir Tudman\",\r\n    \"emp_no\": \"ff1574-59\",\r\n    \"hire_date\": \"08-11-2025\",\r\n    \"job\": \"Works the mines\",\r\n    \"salary\": 60000.0,\r\n    \"dept_id\": 14,\r\n    \"mng_id\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee - ERROR - weekend",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has updated employee information\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bdftest\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company\": \"ff1574\",\r\n    \"emp_id\":46,\r\n    \"emp_name\":\"Franjomir Tudman\",\r\n    \"emp_no\": \"ff1574-59\",\r\n    \"hire_date\": \"08-11-2024\",\r\n    \"job\": \"Works the mines\",\r\n    \"salary\": 60000.0,\r\n    \"dept_id\": 14,\r\n    \"mng_id\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Successful Delete\", function () {\r",
+									"    pm.expect(pm.response.text().toLowerCase()).to.include(\"success\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/employee?company=ff1574&emp_id=45",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "ff1574"
+								},
+								{
+									"key": "emp_id",
+									"value": "45"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timecards",
+			"item": [
+				{
+					"name": "Timecards - ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard?emp_id=30",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							],
+							"query": [
+								{
+									"key": "emp_id",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard - One",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard?timecard_id=17",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							],
+							"query": [
+								{
+									"key": "timecard_id",
+									"value": "17"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-8 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-8 18:00:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Two weeks ago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-10-8 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-10-8 18:00:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Same day entime",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-9 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-10 18:00:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Less than one hour timecard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-9 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-9 10:30:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Weekend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-10 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-10 17:30:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Between 6 and 18",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-12 4:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-12 23:30:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Same day timecard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "start_time",
+									"value": "2024-11-12 10:00:00",
+									"type": "text"
+								},
+								{
+									"key": "end_time",
+									"value": "2024-11-12 18:00:00",
+									"type": "text"
+								},
+								{
+									"key": "emp_id",
+									"value": "32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":20,\r\n    \"emp_id\":30,\r\n    \"start_time\":\"2024-11-07 10:00:00\",\r\n    \"end_time\":\"2024-11-07 18:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Two weeks ago",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2023-11-07 10:00:00\",\r\n    \"end_time\":\"2023-11-07 18:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Same day endtime",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2024-11-07 10:00:00\",\r\n    \"end_time\":\"2024-11-08 18:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Less than one hour timecard",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2024-11-07 10:00:00\",\r\n    \"end_time\":\"2024-11-07 10:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Weekend",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2024-11-10 10:00:00\",\r\n    \"end_time\":\"2024-11-10 18:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Between 6 and 18",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2024-11-07 4:00:00\",\r\n    \"end_time\":\"2024-11-07 22:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard ERROR - Same day timecard",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"timecard_id\":22,\r\n    \"emp_id\":32,\r\n    \"start_time\":\"2024-11-12 10:00:00\",\r\n    \"end_time\":\"2024-11-12 18:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timecard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/fister-franko-p3/api/timecard?timecard_id=17",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"fister-franko-p3",
+								"api",
+								"timecard"
+							],
+							"query": [
+								{
+									"key": "timecard_id",
+									"value": "17"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
